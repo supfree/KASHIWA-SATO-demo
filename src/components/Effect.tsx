@@ -34,6 +34,7 @@ export const Effect: React.FC<EffectProps> = ({
       callback();
       setTempStr("");
     }
+    // eslint-disable-next-line
   }, [enable, tempStr]);
 
   return (
