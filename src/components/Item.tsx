@@ -13,7 +13,11 @@ export const Item: React.FC<{ item: ItemType }> = ({ item }): JSX.Element => {
       <Wrapper onMouseEnter={() => setIsEffect(true)}>
         <Image src={"https://kashiwasato.com" + item.imgage} />
         <Name>
-          <Effect str={item.title} enable={isEffect} callback={disableEffect} />
+          <Effect
+            str={item.title.toUpperCase()}
+            enable={isEffect}
+            callback={disableEffect}
+          />
         </Name>
         <Desc>
           {item.credits.map((credit, index) => {
