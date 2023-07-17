@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { Visible, Hidden } from "react-awesome-styled-grid";
 import Footer from "./Footer";
@@ -10,17 +10,20 @@ export const Header: React.FC = (): JSX.Element => {
   const [isLeftEffect, setIsLeftEffect] = useState<boolean>(false);
   const [rightEffectStr, setRightEffectStr] = useState<String>("");
 
-  const getEffectLi = (str: String) => {
-    return (
-      <li onMouseEnter={() => setRightEffectStr(str)}>
-        <Effect
-          str={str}
-          enable={rightEffectStr === str}
-          callback={() => setRightEffectStr("")}
-        />
-      </li>
-    );
-  };
+  const getEffectLi = useCallback(
+    (str: String) => {
+      return (
+        <li onMouseEnter={() => setRightEffectStr(str)}>
+          <Effect
+            str={str}
+            enable={rightEffectStr === str}
+            callback={() => setRightEffectStr("")}
+          />
+        </li>
+      );
+    },
+    [rightEffectStr]
+  );
 
   return (
     <Container>
